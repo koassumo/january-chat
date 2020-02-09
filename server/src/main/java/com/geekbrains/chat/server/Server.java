@@ -68,6 +68,10 @@ public class Server {
         sender.sendMsg(receiverNickname + " не в сети");
     }
 
+    public void changeNick (String oldNick, String newNick) {
+        authManager.changeNickInAuthArray(oldNick, newNick);
+    }
+
     public boolean isNickBusy(String nickname) {
         for (ClientHandler o : clients) {
             if (o.getNickname().equals(nickname)) {

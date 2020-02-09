@@ -26,6 +26,15 @@ public class BasicAuthManager implements AuthManager {
     }
 
     @Override
+    public void changeNickInAuthArray (String oldNick, String newNick){
+        for (Entry u : users) {
+            if (u.nickname.equals(oldNick)) {
+                u.nickname = newNick;
+            }
+        }
+    }
+
+    @Override
     public String getNicknameByLoginAndPassword(String login, String password) {
         for (Entry u : users) {
             if (u.login.equals(login) && u.password.equals(password)) {

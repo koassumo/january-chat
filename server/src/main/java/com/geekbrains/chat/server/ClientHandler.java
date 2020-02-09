@@ -52,6 +52,12 @@ public class ClientHandler {
                             server.sendPrivateMsg(this, tokens[1], tokens[2]);
                             continue;
                         }
+                        if (msg.startsWith("/change_nick ")) {
+                            String[] tokens = msg.split(" ");
+                            server.changeNick (nickname, tokens[1]);
+                            nickname = tokens[1];
+                            continue;
+                        }
                         if (msg.equals("/end")) {
                             sendMsg("/end_confirm");
                             break;
