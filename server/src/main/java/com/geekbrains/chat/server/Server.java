@@ -3,6 +3,7 @@ package com.geekbrains.chat.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,9 +20,9 @@ public class Server {
         return authManager;
     }
 
-    public Server(int port) {
+    public Server(int port) throws SQLException {
         clients = new ArrayList<>();
-        authManager = new BasicAuthManager();
+        authManager = new JdbcAuthManager();
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Сервер запущен. Ожидаем подключения клиентов...");
             while (true) {
